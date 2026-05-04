@@ -12,8 +12,8 @@ export const uploadProfile = async (req, res) => {
     }
 
     // build image URL
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
-
+    const baseUrl = process.env.BASE_URL || "http://localhost:5000";
+    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
     // update user
     const updatedUser = await User.findByIdAndUpdate(
       userId,
