@@ -15,7 +15,6 @@ import path from "path";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
-import './config/passport.js';
 
 
 // ✅ Connect to MongoDB
@@ -64,10 +63,6 @@ app.use(
     },
   })
 );
-
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 app.use("/uploads", express.static("uploads"));//server uploaded images
