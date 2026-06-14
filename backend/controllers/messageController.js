@@ -50,7 +50,6 @@ const getMessages = async (req, res) => {
 const sendMessage = async (req, res) => {
   try {
     const { receiverId, text, isActive, replyingTo } = req.body;
-    console.log(replyingTo);
     const senderId = req.user._id;
 
 
@@ -74,7 +73,6 @@ const sendMessage = async (req, res) => {
       } : null,
     });
 
-    console.log(userMessage);
 
 
 
@@ -192,7 +190,6 @@ const deleteMessages = async (req, res) => {
         }
       );
 
-      console.log(result);
 
 
       return res.status(200).json({

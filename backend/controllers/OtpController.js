@@ -151,11 +151,11 @@ export const resetPassword = async (req, res) => {
       return res.status(400).json({ message: "OTP not verified. Please verify first." });
     }
 
-    console.log("otpcontroller.js / 154", password, confirmPassword);
+    // console.log("otpcontroller.js / 154", password, confirmPassword);
 
     user.password = password;
 
-    console.log("otpcontroller.js / 157", user.password);
+    // console.log("otpcontroller.js / 157", user.password);
 
     // Clear OTP fields so they can't be reused
     user.Otp = undefined;
@@ -164,7 +164,7 @@ export const resetPassword = async (req, res) => {
     
     await user.save();
 
-    console.log("otpcontroller.js / 167 password reset successful", user);
+    // console.log("otpcontroller.js / 167 password reset successful", user);
 
     res.status(200).json({ message: "Password reset successful" });
   } catch (error) {

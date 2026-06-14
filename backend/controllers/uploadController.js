@@ -14,9 +14,9 @@ export const uploadMedia = async (
       removeprofile,
     } = req.body;
 
-    console.log("userId:", userId);
-    console.log("type:", type);
-    console.log("receiverId:", receiverId);
+    // console.log("userId:", userId);
+    // console.log("type:", type);
+    // console.log("receiverId:", receiverId);
 
     // Remove profile pic
     if (removeprofile) {

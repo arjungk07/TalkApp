@@ -242,8 +242,6 @@ export const useMessages = (selectedUser) => {
 
     setSending(true);
 
-    setMessages((prev) => [...prev , text]); //instant update 
-    setSending(false)
 
     try {
       const { data } = await api.post("/api/messages", {

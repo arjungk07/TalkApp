@@ -1,6 +1,6 @@
 import React from 'react';
 // Import the image so the bundler (Vite/Webpack) handles the path
-import defaultWallpaper from '../assets/image/logo1.png';
+import defaultWallpaper from '../assets/image/talk_default_wallpaper.jpeg';
 
 const TalkAppWallpaper = ({
   // Use the imported variable as the default value
@@ -11,12 +11,11 @@ const TalkAppWallpaper = ({
       className={`
         absolute 
         inset-0 
-        z-1
+        z-0
         w-full 
-        h-full 
-        overflow-hidden 
+        h-dvh
         pointer-events-none 
-        opacity-0
+        opacity-100
         bg-no-repeat
         bg-cover
         bg-center`}

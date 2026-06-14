@@ -425,7 +425,7 @@ const MessageBubble = ({ message, onEmojiClick, onReply, searchQuery, registerMe
       onContextMenu={handleContextMenu}
       onClick={handleRowClick}
       className={`
-        flex mb-3 px-2 relative group transition-colors duration-200 gap-3 items-center select-none
+        flex mb-5  px-2 relative group transition-colors duration-200 gap-3 items-center select-none
         ${isSent ? "justify-end" : "justify-start"}
         ${isSelectMode
           ? `rounded-xl ${isSent ? "md:justify-between!" : ""} bg-gray-50/50 hover:bg-green-50/60 active:scale-[0.99]`
@@ -433,6 +433,7 @@ const MessageBubble = ({ message, onEmojiClick, onReply, searchQuery, registerMe
         ${isSelectMode && isSelected ? "bg-green-100/50 hover:bg-green-100/70" : ""}
       `}
     >
+      
       {/* Reply icon — revealed from the left as row slides right */}
       <motion.div
         aria-hidden="true"
@@ -527,7 +528,7 @@ const MessageBubble = ({ message, onEmojiClick, onReply, searchQuery, registerMe
             relative overflow-visible flex flex-col gap-1 text-[15px] font-medium rounded-[14px] transition-all duration-300
             ${message.replyingTo ? "p-0.5" : hasAttachments ? "p-1" : "ps-5 pt-1 pe-3"}
             ${isSent
-              ? "bg-chat-panel bg-[url('https://img.magnific.com/free-vector/elegant-gradient-background_1340-3948.jpg?semt=ais_hybrid&w=740&q=80')] opacity-90 bg-cover bg-center bg-no-repeat text-[#1A1A1A] rounded-br-xs after:absolute after:bottom-0 after:-right-2 after:w-0 after:h-0 after:border-l-9 after:border-l-[#600307] after:border-t-8 after:border-t-transparent"
+              ? "bg-[#ED86C5] text-[#1A1A1A] rounded-br-xs after:absolute after:bottom-0 after:-right-2 after:w-0 after:h-0 after:border-l-9 after:border-l-[#ED86C5] after:border-t-8 after:border-t-transparent"
               : "bg-chat-surface text-[#2B2B2B] rounded-bl-md before:absolute before:bottom-0 before:-left-1.5 before:w-0 before:h-0 before:border-r-8 before:border-r-chat-surface before:border-t-8 before:border-t-transparent"
             }
           `}

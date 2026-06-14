@@ -14,7 +14,8 @@ import { format, set } from "date-fns";
 import { UploadBar, DeleteMessagePopup, DeleteAction } from "./ActionBars";
 import api from "../utils/api";
 import toast from "react-hot-toast";
-import Loading_animation from '../assets/image/loading_animation.mp4'
+import Loading_animation from '../assets/image/loading_animation.webm'
+import talkappWallpaper from '../assets/image/talkappwallpaper.jpg';
 
 
 
@@ -79,7 +80,7 @@ export const RecentMsg = ({ handleSend }) => {
   };
 
   return (
-    <div className="flex items-center gap-3 overflow-x-auto px-4 py-2 scrollbar-hide">
+    <div className="absolute flex items-center gap-3 overflow-x-auto px-4 py-2 scrollbar-hide">
 
       {displayMessages.map((msg, index) => (
 
@@ -244,7 +245,7 @@ const ChatWindow = () => {
 
       // 3. Only scroll down if it's NOT already visible on screen
       if (!isAtBottom) {
-        bottomRef.current.scrollIntoView({ behavior: "auto" });
+        bottomRef.current.scrollIntoView({ behavior: "auto", block: "center" });
       }
     }
   }, [messages, isTyping, text]);
@@ -411,7 +412,7 @@ const ChatWindow = () => {
   };
 
 
-
+  const isMobile = window.innerWidth < 768;
 
 
   // No user selected — only visible on desktop (parent hides this on mobile)
@@ -437,6 +438,10 @@ const ChatWindow = () => {
   return (
 
     <div className={`relative flex flex-col w-full h-dvh bg-chat-bg`}  >
+
+
+
+
       {/* ── HEADER — never moves ── */}
       <div className={`absolute top-0 inset-x-0 ${DeleteModel ? "z-0" : "z-99"} bg-white`}>
         <ChatHeader
@@ -456,19 +461,18 @@ const ChatWindow = () => {
         ref={chatContainerRef}
         className="relative flex-1 w-full px-4 overflow-y-auto overflow-x-hidden custom-scrollbar"
         style={{
+          backgroundImage: isMobile
+            ? `url(${talkappWallpaper})`
+            : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           paddingTop: "120px",
-          paddingBottom: `${keyboardHeight + 50}px`,  // ✅ adjusts when keyboard opens
-          transition: 'paddingBottom 0.2s ease'
-        }}>
-
-        <div className="w-full px-4 lg:px-6 relative">
-          <TalkAppWallpaper />
-        </div>
-
+          paddingBottom: `${keyboardHeight + 0}px`,
+        }}
+      >
 
 
         {loading ? (
-
           <div className="flex items-center justify-center min-h-[60vh]">
             <div className="flex flex-col items-center gap-3">
               <video
@@ -558,6 +562,9 @@ const ChatWindow = () => {
           </div>
         )}
 
+        <RecentMsg handleSend={handleSend} />
+
+
         <div ref={bottomRef} />
       </main>
 
@@ -571,7 +578,6 @@ const ChatWindow = () => {
         }}
       />
 
-      <RecentMsg handleSend={handleSend} />
 
       {/* ── FOOTER — sticky at visual bottom, never moves ── */}
 
